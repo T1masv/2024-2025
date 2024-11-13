@@ -38,6 +38,6 @@ Below is a summary of the content of each workshops. The TP-1, TP-2 and TP-3 fol
   * Scalability
   * Kubernetes package management
 
-## TP-3 - Monistoring and Incidents Management ##
+## TP-3 - Monitoring and Incidents Management ##
 
 * Monitor the application / platform
