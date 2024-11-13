@@ -34,6 +34,10 @@ Below is a summary of the content of each workshops. The TP-1, TP-2 and TP-3 fol
 
 * Manage, scale, and maintain containerized applications
 
+  * Deployment in different environments
+  * Scalability
+  * Kubernetes package management
+
 ## TP-3 - Monistoring and Incidents Management ##
 
 * Monitor the application / platform
