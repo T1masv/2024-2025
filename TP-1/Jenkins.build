@@ -17,7 +17,7 @@ pipeline {
         script {
           dir('TP-1/backend') {
             container('docker') { // Specify the Docker container
-              backendImage = docker.build("efrei2024/t1masv-backend:1")
+              backendImage = docker.build("efrei2023/t1masv-backend:1")
             }
           }
         }
@@ -41,7 +41,7 @@ pipeline {
         script {
           dir('TP-1/frontend') {
             container('docker') { // Specify the Docker container
-              frontendImage = docker.build("efrei2024/t1masv-frontend:1")
+              frontendImage = docker.build("efrei2023/t1masv-frontend:1")
             }
           }
         }
