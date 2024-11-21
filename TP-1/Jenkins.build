@@ -1,7 +1,6 @@
 def backendImage = ''
 def frontendImage = ''
 pipeline {
-
   agent {
     label 'jenkins-slave'
   }
@@ -12,23 +11,27 @@ pipeline {
         git branch: 'main', credentialsId: 'myNewId', url: 'https://github.com/T1masv/2024-2025.git'
       }
     }
+
     stage('Building backend image') {
       steps {
         script {
           dir('TP-1/backend') {
-            backendImage = docker.build("efrei2023/backend:1")
-
+            container('docker') { // Specify the Docker container
+              backendImage = docker.build("efrei2023/backend:1")
+            }
           }
         }
       }
     }
+
     stage('Publish backend Image') {
       steps {
         script {
-          withDockerRegistry(credentialsId: 'DockerHubEfrei') {
-            backendImage.push()
+          container('docker') { // Specify the Docker container
+            withDockerRegistry(credentialsId: 'DockerHubEfrei') {
+              backendImage.push()
+            }
           }
-
         }
       }
     }
@@ -37,7 +40,9 @@ pipeline {
       steps {
         script {
           dir('TP-1/frontend') {
-            frontendImage = docker.build("efrei2023/frontend:1")
+            container('docker') { // Specify the Docker container
+              frontendImage = docker.build("efrei2023/frontend:1")
+            }
           }
         }
       }
@@ -46,8 +51,10 @@ pipeline {
     stage('Publish frontend Image') {
       steps {
         script {
-          withDockerRegistry(credentialsId: 'DockerHubEfrei') {
-            frontendImage.push()
+          container('docker') { // Specify the Docker container
+            withDockerRegistry(credentialsId: 'DockerHubEfrei') {
+              frontendImage.push()
+            }
           }
         }
       }
@@ -55,12 +62,13 @@ pipeline {
 
     stage('Deploy backend container') {
       steps {
-        echo "Run  backend conatiner "
+        echo "Run backend container"
       }
     }
+
     stage('Deploy frontend container') {
       steps {
-        echo "Run  backend container "
+        echo "Run frontend container"
       }
     }
   }
