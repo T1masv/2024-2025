@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git branch: 'main', credentialsId: 'myid', url: '......'
+        git branch: 'main', credentialsId: 'myNewId', url: 'https://github.com/T1masv/2024-2025.git'
       }
     }
     stage('Building backend image') {
@@ -40,6 +40,8 @@ pipeline {
             frontendImage = docker.build("efrei2023/frontend:1")
           }
         }
+Fetching changes from the remote Git repository
+ER
       }
     }
 
