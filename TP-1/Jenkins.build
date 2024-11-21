@@ -40,8 +40,6 @@ pipeline {
             frontendImage = docker.build("efrei2023/frontend:1")
           }
         }
-Fetching changes from the remote Git repository
-ER
       }
     }
 
